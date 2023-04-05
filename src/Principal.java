@@ -1,38 +1,32 @@
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Principal {
-	public static void main(String[] args) throws IOException {
-
+	public static void main(String[] args) {
+		System.out.println("MANIPULADOR DE .TXT\n");
+		
 		Scanner teclado = new Scanner(System.in);
 		String endereco, nomeDoArquivo, texto;
-
-		System.out.println("Informe o endereço em que deseja criar o arquivo: ");
-		endereco = teclado.nextLine();
-		System.out.println("Digite o nome do arquivo: ");
-		nomeDoArquivo = teclado.nextLine()+".txt";
-		texto = teclado.nextLine();
+		int opcao;
 		
-
+		System.out.println("1 - Inserir nome do arquivo");
+		System.out.println("2 - Exibir todos os nomes do arquivo;");
+		System.out.println("3 - apagar todo arquivo\n");
 		
+		System.out.println("Qual opção deseja selecionar?");
+		opcao = teclado.nextInt();
 		
-		try {
-			File arquivo = new File(endereco + "\\" + nomeDoArquivo); //Cria o arquivo .txt no endereço informado pelo usuário e com o nome informado.			
-			arquivo.createNewFile();
-			FileWriter arq = new FileWriter(endereco+"\\"+nomeDoArquivo);
-			PrintWriter grava = new PrintWriter(arq);
-			grava.println(texto);
-			grava.close();
-			arq.close();
-			System.out.println("Arquivo criado com sucesso!");
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(opcao == 1) {
+			Manipula.Write();
 		}
-
+		else if(opcao == 2) {
+			Manipula.Read();
 		}
+		else if(opcao == 3) {
+			Manipula.Delete();
+		}
+	}
 }
